@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,7 +8,12 @@
 
 <title>LAVENZA — Italian Restaurant & Café</title>
 
+
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 * {
   margin: 0;
@@ -15,12 +21,17 @@
   box-sizing: border-box;
 }
 
+
 html,
 body {
+
   width: 100%;
   height: 100%;
+
   overflow: hidden;
+
   background: #f6efe3;
+
 }
 
 
@@ -29,7 +40,9 @@ body {
 ========================= */
 
 .page {
+
   position: absolute;
+
   inset: 0;
 
   width: 100vw;
@@ -38,6 +51,7 @@ body {
   object-fit: contain;
 
   opacity: 0;
+
   transform: scale(0.985);
 
   pointer-events: none;
@@ -45,13 +59,18 @@ body {
   transition:
     opacity 0.55s ease,
     transform 0.65s ease;
+
 }
 
+
 .page.active {
+
   opacity: 1;
+
   transform: scale(1);
 
   pointer-events: auto;
+
 }
 
 
@@ -64,14 +83,17 @@ body {
   position: fixed;
 
   bottom: 18px;
+
   left: 50%;
 
   transform: translateX(-50%);
 
   display: flex;
+
   gap: 14px;
 
   z-index: 50;
+
 }
 
 
@@ -81,6 +103,7 @@ body {
   height: 42px;
 
   border: 1px solid #b69a62;
+
   border-radius: 50%;
 
   background: rgba(246, 239, 227, 0.92);
@@ -92,25 +115,34 @@ body {
   cursor: pointer;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   transition: 0.25s ease;
+
 }
 
 
 .arrow:hover {
+
   transform: scale(1.08);
+
 }
 
 
 .arrow:active {
+
   transform: scale(0.94);
+
 }
 
 
 .arrow.hidden {
+
   display: none;
+
 }
 
 
@@ -123,6 +155,7 @@ body {
   position: fixed;
 
   top: 20px;
+
   left: 20px;
 
   z-index: 60;
@@ -130,6 +163,7 @@ body {
   padding: 10px 17px;
 
   border: 1px solid #b69a62;
+
   border-radius: 30px;
 
   background: rgba(246, 239, 227, 0.94);
@@ -153,6 +187,7 @@ body {
   transition:
     opacity 0.35s ease,
     transform 0.35s ease;
+
 }
 
 
@@ -163,6 +198,7 @@ body {
   pointer-events: auto;
 
   transform: translateY(0);
+
 }
 
 
@@ -171,6 +207,7 @@ body {
   background: #fffaf2;
 
   transform: translateY(-2px);
+
 }
 
 
@@ -183,6 +220,7 @@ body {
   position: fixed;
 
   top: 20px;
+
   right: 20px;
 
   z-index: 60;
@@ -190,6 +228,7 @@ body {
   padding: 10px 17px;
 
   border: 1px solid #b69a62;
+
   border-radius: 30px;
 
   background: rgba(246, 239, 227, 0.94);
@@ -213,6 +252,7 @@ body {
   transition:
     opacity 0.35s ease,
     transform 0.35s ease;
+
 }
 
 
@@ -223,6 +263,7 @@ body {
   pointer-events: auto;
 
   transform: translateY(0);
+
 }
 
 
@@ -231,11 +272,12 @@ body {
   background: #fffaf2;
 
   transform: translateY(-2px);
+
 }
 
 
 /* =========================
-   INVISIBLE MENU AREAS
+   INVISIBLE CLICK AREAS
 ========================= */
 
 .menu-area {
@@ -249,107 +291,137 @@ body {
   background: transparent;
 
   border: none;
+
+  outline: none;
+
 }
 
 
-/*
+/* =========================
    PAGE 1
-   Explore Our Menu
-*/
+   EXPLORE OUR MENU
+========================= */
 
 .explore-area {
 
-  left: 25%;
-  top: 65%;
+  left: 50%;
 
-  width: 50%;
-  height: 15%;
+  top: 72%;
+
+  width: 220px;
+
+  height: 55px;
+
+  transform: translateX(-50%);
+
 }
 
 
-/*
+/* =========================
    PAGE 2
-   MENU CATEGORIES
+   CATEGORY AREAS
+========================= */
 
-   Layout:
+/*
 
-   RIGHT        LEFT
+   ┌──────────────┬──────────────┐
+   │    SOUPS     │ MAIN DISHES  │
+   ├──────────────┼──────────────┤
+   │    DRINKS    │   STARTERS   │
+   ├──────────────┼──────────────┤
+   │   DESSERTS   │    SIDES     │
+   └──────────────┴──────────────┘
 
-   Main         Soups
-   Starters     Drinks
-   Sides        Desserts
 */
 
 
-/* Main Dishes — top right */
+/* Main Dishes — TOP RIGHT */
 
 .main-dishes-area {
 
-  right: 50%;
-  top: 15%;
+  right: 25%;
 
-  width: 50%;
-  height: 28%;
+  top: 24%;
+
+  width: 20%;
+
+  height: 15%;
+
 }
 
 
-/* Soups — top left */
+/* Soups — TOP LEFT */
 
 .soups-area {
 
-  left: 50%;
-  top: 15%;
+  left: 25%;
 
-  width: 50%;
-  height: 28%;
+  top: 24%;
+
+  width: 20%;
+
+  height: 15%;
+
 }
 
 
-/* Starters — middle right */
+/* Starters — MIDDLE RIGHT */
 
 .starters-area {
 
-  right: 50%;
-  top: 43%;
+  right: 25%;
 
-  width: 50%;
-  height: 28%;
+  top: 42%;
+
+  width: 20%;
+
+  height: 15%;
+
 }
 
 
-/* Drinks — middle left */
+/* Drinks — MIDDLE LEFT */
 
 .drinks-area {
 
-  left: 50%;
-  top: 43%;
+  left: 25%;
 
-  width: 50%;
-  height: 28%;
+  top: 42%;
+
+  width: 20%;
+
+  height: 15%;
+
 }
 
 
-/* Sides — bottom right */
+/* Sides — BOTTOM RIGHT */
 
 .sides-area {
 
-  right: 50%;
-  top: 71%;
+  right: 25%;
 
-  width: 50%;
-  height: 28%;
+  top: 60%;
+
+  width: 20%;
+
+  height: 15%;
+
 }
 
 
-/* Desserts — bottom left */
+/* Desserts — BOTTOM LEFT */
 
 .desserts-area {
 
-  left: 50%;
-  top: 71%;
+  left: 25%;
 
-  width: 50%;
-  height: 28%;
+  top: 60%;
+
+  width: 20%;
+
+  height: 15%;
+
 }
 
 
@@ -359,19 +431,24 @@ body {
 
 @media (max-width: 600px) {
 
+
   .arrow {
 
     width: 38px;
+
     height: 38px;
 
     font-size: 19px;
+
   }
 
 
   .navigation {
 
     bottom: 14px;
+
     gap: 10px;
+
   }
 
 
@@ -383,9 +460,20 @@ body {
     padding: 8px 14px;
 
     font-size: 12px;
+
+  }
+
+
+  .explore-area {
+
+    width: 180px;
+
+    height: 48px;
+
   }
 
 }
+
 
 </style>
 
@@ -396,7 +484,7 @@ body {
 
 
 <!-- =========================
-     PAGES
+     MENU PAGES
 ========================= -->
 
 <img src="1.jpg" class="page active">
@@ -419,12 +507,13 @@ body {
 
 
 <!-- =========================
-     EXPLORE MENU
+     EXPLORE OUR MENU
 ========================= -->
 
 <button
   class="menu-area explore-area"
-  onclick="goToPage(1)">
+  onclick="goToPage(1)"
+  aria-label="Explore Our Menu">
 </button>
 
 
@@ -433,56 +522,62 @@ body {
 ========================= -->
 
 
-<!-- Main Dishes -->
+<!-- MAIN DISHES -->
 
 <button
   class="menu-area main-dishes-area"
-  onclick="goToPage(2)">
+  onclick="goToPage(2)"
+  aria-label="Main Dishes">
 </button>
 
 
-<!-- Soups -->
+<!-- SOUPS -->
 
 <button
   class="menu-area soups-area"
-  onclick="goToPage(3)">
+  onclick="goToPage(3)"
+  aria-label="Soups">
 </button>
 
 
-<!-- Starters -->
+<!-- STARTERS -->
 
 <button
   class="menu-area starters-area"
-  onclick="goToPage(4)">
+  onclick="goToPage(4)"
+  aria-label="Starters">
 </button>
 
 
-<!-- Drinks -->
+<!-- DRINKS -->
 
 <button
   class="menu-area drinks-area"
-  onclick="goToPage(5)">
+  onclick="goToPage(5)"
+  aria-label="Drinks">
 </button>
 
 
-<!-- Sides -->
+<!-- SIDES -->
 
 <button
   class="menu-area sides-area"
-  onclick="goToPage(6)">
+  onclick="goToPage(6)"
+  aria-label="Sides">
 </button>
 
 
-<!-- Desserts -->
+<!-- DESSERTS -->
 
 <button
   class="menu-area desserts-area"
-  onclick="goToPage(7)">
+  onclick="goToPage(7)"
+  aria-label="Desserts">
 </button>
 
 
 <!-- =========================
-     HOME BUTTON
+     HOME
 ========================= -->
 
 <button
@@ -510,10 +605,11 @@ body {
 
 
 <!-- =========================
-     NAVIGATION ARROWS
+     ARROWS
 ========================= -->
 
 <div class="navigation">
+
 
   <button
     id="previous"
@@ -533,6 +629,7 @@ body {
     →
 
   </button>
+
 
 </div>
 
@@ -574,69 +671,103 @@ const menuButton =
 function updatePage() {
 
 
-  pages.forEach(page => {
+  pages.forEach(function(page) {
 
     page.classList.remove("active");
 
   });
 
 
-  pages[currentPage].classList.add("active");
+  pages[currentPage]
+    .classList.add("active");
 
 
-  /* HOME */
+  /* =====================
+     HOME BUTTON
+  ===================== */
 
   if (currentPage === 0) {
 
-    homeButton.classList.remove("visible");
+    homeButton
+      .classList
+      .remove("visible");
 
-  } else {
+  }
 
-    homeButton.classList.add("visible");
+  else {
+
+    homeButton
+      .classList
+      .add("visible");
 
   }
 
 
-  /* BACK TO MENU */
+  /* =====================
+     BACK TO MENU
+  ===================== */
 
   if (
     currentPage >= 2 &&
     currentPage <= 8
   ) {
 
-    menuButton.classList.add("visible");
+    menuButton
+      .classList
+      .add("visible");
 
-  } else {
+  }
 
-    menuButton.classList.remove("visible");
+  else {
+
+    menuButton
+      .classList
+      .remove("visible");
 
   }
 
 
-  /* PREVIOUS */
+  /* =====================
+     PREVIOUS ARROW
+  ===================== */
 
   if (currentPage === 0) {
 
-    previousButton.classList.add("hidden");
+    previousButton
+      .classList
+      .add("hidden");
 
-  } else {
+  }
 
-    previousButton.classList.remove("hidden");
+  else {
+
+    previousButton
+      .classList
+      .remove("hidden");
 
   }
 
 
-  /* NEXT */
+  /* =====================
+     NEXT ARROW
+  ===================== */
 
   if (
-    currentPage === pages.length - 1
+    currentPage ===
+    pages.length - 1
   ) {
 
-    nextButton.classList.add("hidden");
+    nextButton
+      .classList
+      .add("hidden");
 
-  } else {
+  }
 
-    nextButton.classList.remove("hidden");
+  else {
+
+    nextButton
+      .classList
+      .remove("hidden");
 
   }
 
@@ -644,10 +775,11 @@ function updatePage() {
 
 
 /* =========================
-   GO TO SPECIFIC PAGE
+   GO TO PAGE
 ========================= */
 
 function goToPage(pageNumber) {
+
 
   if (
     pageNumber >= 0 &&
@@ -664,10 +796,11 @@ function goToPage(pageNumber) {
 
 
 /* =========================
-   NEXT
+   NEXT PAGE
 ========================= */
 
 function nextPage() {
+
 
   if (
     currentPage <
@@ -684,10 +817,11 @@ function nextPage() {
 
 
 /* =========================
-   PREVIOUS
+   PREVIOUS PAGE
 ========================= */
 
 function previousPage() {
+
 
   if (currentPage > 0) {
 
@@ -727,12 +861,13 @@ function goToMenu() {
 
 
 /* =========================
-   KEYBOARD
+   KEYBOARD NAVIGATION
 ========================= */
 
 document.addEventListener(
   "keydown",
   function(event) {
+
 
     if (event.key === "ArrowRight") {
 
@@ -752,12 +887,15 @@ document.addEventListener(
 
 
 /* =========================
-   INITIAL
+   INITIAL PAGE
 ========================= */
 
 updatePage();
 
+
 </script>
 
+
 </body>
+
 </html>
