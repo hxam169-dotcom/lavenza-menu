@@ -7,6 +7,7 @@
 <title>LAVENZA — Italian Restaurant & Café</title>
 
 <style>
+
 * {
   margin: 0;
   padding: 0;
@@ -20,78 +21,254 @@ html, body {
   background: #f6efe3;
 }
 
+
+/* =========================
+   PAGES
+========================= */
+
 .page {
+  position: absolute;
+  inset: 0;
+
   width: 100vw;
   height: 100vh;
+
   object-fit: contain;
-  display: none;
+
+  opacity: 0;
+  transform: scale(0.985);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.65s ease;
 }
 
 .page.active {
-  display: block;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
 }
 
-/* Navigation arrows */
+
+/* =========================
+   NAVIGATION
+========================= */
+
 .navigation {
   position: fixed;
+
   bottom: 18px;
   left: 50%;
+
   transform: translateX(-50%);
+
   display: flex;
   gap: 14px;
+
   z-index: 20;
 }
+
 
 .arrow {
   width: 42px;
   height: 42px;
+
   border: 1px solid #b69a62;
   border-radius: 50%;
+
   background: rgba(246, 239, 227, 0.92);
+
   color: #3b2923;
+
   font-size: 22px;
+
   cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.2s;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
 
 .arrow:hover {
   transform: scale(1.08);
+
+  background: #fffaf2;
+
+  box-shadow:
+    0 4px 15px rgba(59, 41, 35, 0.12);
 }
+
+
+.arrow:active {
+  transform: scale(0.95);
+}
+
 
 .arrow.hidden {
   display: none;
 }
+
+
+/* =========================
+   HOME BUTTON
+========================= */
+
+.home-button {
+
+  position: fixed;
+
+  top: 20px;
+  left: 20px;
+
+  z-index: 30;
+
+  padding: 10px 17px;
+
+  border: 1px solid #b69a62;
+  border-radius: 30px;
+
+  background: rgba(246, 239, 227, 0.94);
+
+  color: #3b2923;
+
+  font-family: Georgia, serif;
+
+  font-size: 13px;
+
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(-8px);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    background 0.25s ease;
+}
+
+
+.home-button.visible {
+
+  opacity: 1;
+  pointer-events: auto;
+
+  transform: translateY(0);
+}
+
+
+.home-button:hover {
+
+  background: #fffaf2;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 19px;
+  }
+
+  .navigation {
+    bottom: 14px;
+    gap: 10px;
+  }
+
+  .home-button {
+    top: 14px;
+    left: 14px;
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- Pages -->
+
+<!-- =========================
+     PAGES
+========================= -->
 
 <img src="1.jpg" class="page active">
+
 <img src="2.jpg" class="page">
+
 <img src="3.jpg" class="page">
+
 <img src="4.jpg" class="page">
+
 <img src="5.jpg" class="page">
+
 <img src="6.jpg" class="page">
+
 <img src="7.jpg" class="page">
+
 <img src="8.jpg" class="page">
+
 <img src="9.jpg" class="page">
 
 
-<!-- Navigation -->
+<!-- =========================
+     HOME BUTTON
+========================= -->
+
+<button
+  id="homeButton"
+  class="home-button"
+  onclick="goHome()">
+
+  ← Home
+
+</button>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <div class="navigation">
 
-  <button id="previous" class="arrow" onclick="previousPage()">
+  <button
+    id="previous"
+    class="arrow"
+    onclick="previousPage()">
+
     ←
+
   </button>
 
-  <button id="next" class="arrow" onclick="nextPage()">
+
+  <button
+    id="next"
+    class="arrow"
+    onclick="nextPage()">
+
     →
+
   </button>
 
 </div>
@@ -99,33 +276,86 @@ html, body {
 
 <script>
 
+
 let currentPage = 0;
 
-const pages = document.querySelectorAll(".page");
 
-const previousButton = document.getElementById("previous");
-const nextButton = document.getElementById("next");
+const pages =
+  document.querySelectorAll(".page");
 
+
+const previousButton =
+  document.getElementById("previous");
+
+
+const nextButton =
+  document.getElementById("next");
+
+
+const homeButton =
+  document.getElementById("homeButton");
+
+
+/* =========================
+   UPDATE PAGE
+========================= */
 
 function updatePage() {
 
+
   pages.forEach(page => {
+
     page.classList.remove("active");
+
   });
+
 
   pages[currentPage].classList.add("active");
 
 
-  /* آخر صفحة: سهم الرجوع فقط */
+  /*
+     الصفحة الأولى:
+     لا يوجد Home
+  */
 
-  if (currentPage === 8) {
+  if (currentPage === 0) {
 
-    previousButton.classList.remove("hidden");
-    nextButton.classList.add("hidden");
+    homeButton.classList.remove("visible");
+
+  } else {
+
+    homeButton.classList.add("visible");
+
+  }
+
+
+  /*
+     أول صفحة:
+     سهم اليسار مخفي
+  */
+
+  if (currentPage === 0) {
+
+    previousButton.classList.add("hidden");
 
   } else {
 
     previousButton.classList.remove("hidden");
+
+  }
+
+
+  /*
+     آخر صفحة:
+     سهم اليمين مخفي
+  */
+
+  if (currentPage === pages.length - 1) {
+
+    nextButton.classList.add("hidden");
+
+  } else {
+
     nextButton.classList.remove("hidden");
 
   }
@@ -133,7 +363,9 @@ function updatePage() {
 }
 
 
-/* الصفحة التالية */
+/* =========================
+   NEXT PAGE
+========================= */
 
 function nextPage() {
 
@@ -148,7 +380,9 @@ function nextPage() {
 }
 
 
-/* الصفحة السابقة */
+/* =========================
+   PREVIOUS PAGE
+========================= */
 
 function previousPage() {
 
@@ -161,6 +395,48 @@ function previousPage() {
   }
 
 }
+
+
+/* =========================
+   HOME
+========================= */
+
+function goHome() {
+
+  currentPage = 0;
+
+  updatePage();
+
+}
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener("keydown", function(event) {
+
+  if (event.key === "ArrowRight") {
+
+    nextPage();
+
+  }
+
+  if (event.key === "ArrowLeft") {
+
+    previousPage();
+
+  }
+
+});
+
+
+/* =========================
+   INITIAL STATE
+========================= */
+
+updatePage();
+
 
 </script>
 
