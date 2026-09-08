@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAVENZA — Italian Restaurant & Café</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background: #f6efe3;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.menu {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6efe3;
+}
+
+.page {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  object-fit: contain;
+}
+
+.page.active {
+  display: block;
+}
+
+.buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+button {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  background: #3b2923;
+  color: #f6efe3;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu">
+
+  <img src="page1.png" class="page active">
+  <img src="page2.png" class="page">
+  <img src="page3.png" class="page">
+  <img src="page4.png" class="page">
+  <img src="page5.png" class="page">
+  <img src="page6.png" class="page">
+  <img src="page7.png" class="page">
+  <img src="page8.png" class="page">
+  <img src="page9.png" class="page">
+
+</div>
+
+<div class="buttons">
+  <button onclick="previousPage()">← Previous</button>
+  <button onclick="nextPage()">Next →</button>
+</div>
+
+<script>
+let currentPage = 0;
+const pages = document.querySelectorAll(".page");
+
+function showPage(index) {
+  pages[currentPage].classList.remove("active");
+  currentPage = (index + pages.length) % pages.length;
+  pages[currentPage].classList.add("active");
+}
+
+function nextPage() {
+  showPage(currentPage + 1);
+}
+
+function previousPage() {
+  showPage(currentPage - 1);
+}
+</script>
+
+</body>
+</html>
