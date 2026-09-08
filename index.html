@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,7 +15,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -48,6 +50,7 @@ html, body {
 .page.active {
   opacity: 1;
   transform: scale(1);
+
   pointer-events: auto;
 }
 
@@ -57,6 +60,7 @@ html, body {
 ========================= */
 
 .navigation {
+
   position: fixed;
 
   bottom: 18px;
@@ -67,11 +71,12 @@ html, body {
   display: flex;
   gap: 14px;
 
-  z-index: 20;
+  z-index: 50;
 }
 
 
 .arrow {
+
   width: 42px;
   height: 42px;
 
@@ -90,25 +95,17 @@ html, body {
   align-items: center;
   justify-content: center;
 
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: 0.25s ease;
 }
 
 
 .arrow:hover {
   transform: scale(1.08);
-
-  background: #fffaf2;
-
-  box-shadow:
-    0 4px 15px rgba(59, 41, 35, 0.12);
 }
 
 
 .arrow:active {
-  transform: scale(0.95);
+  transform: scale(0.94);
 }
 
 
@@ -128,7 +125,7 @@ html, body {
   top: 20px;
   left: 20px;
 
-  z-index: 30;
+  z-index: 60;
 
   padding: 10px 17px;
 
@@ -148,20 +145,21 @@ html, body {
   cursor: pointer;
 
   opacity: 0;
+
   pointer-events: none;
 
   transform: translateY(-8px);
 
   transition:
     opacity 0.35s ease,
-    transform 0.35s ease,
-    background 0.25s ease;
+    transform 0.35s ease;
 }
 
 
 .home-button.visible {
 
   opacity: 1;
+
   pointer-events: auto;
 
   transform: translateY(0);
@@ -177,32 +175,220 @@ html, body {
 
 
 /* =========================
+   BACK TO MENU
+========================= */
+
+.menu-button {
+
+  position: fixed;
+
+  top: 20px;
+  right: 20px;
+
+  z-index: 60;
+
+  padding: 10px 17px;
+
+  border: 1px solid #b69a62;
+  border-radius: 30px;
+
+  background: rgba(246, 239, 227, 0.94);
+
+  color: #3b2923;
+
+  font-family: Georgia, serif;
+
+  font-size: 13px;
+
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform: translateY(-8px);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+.menu-button.visible {
+
+  opacity: 1;
+
+  pointer-events: auto;
+
+  transform: translateY(0);
+}
+
+
+.menu-button:hover {
+
+  background: #fffaf2;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   INVISIBLE MENU AREAS
+========================= */
+
+.menu-area {
+
+  position: fixed;
+
+  z-index: 40;
+
+  cursor: pointer;
+
+  background: transparent;
+
+  border: none;
+}
+
+
+/*
+   PAGE 1
+   Explore Our Menu
+*/
+
+.explore-area {
+
+  left: 25%;
+  top: 65%;
+
+  width: 50%;
+  height: 15%;
+}
+
+
+/*
+   PAGE 2
+   MENU CATEGORIES
+
+   Layout:
+
+   RIGHT        LEFT
+
+   Main         Soups
+   Starters     Drinks
+   Sides        Desserts
+*/
+
+
+/* Main Dishes — top right */
+
+.main-dishes-area {
+
+  right: 50%;
+  top: 15%;
+
+  width: 50%;
+  height: 28%;
+}
+
+
+/* Soups — top left */
+
+.soups-area {
+
+  left: 50%;
+  top: 15%;
+
+  width: 50%;
+  height: 28%;
+}
+
+
+/* Starters — middle right */
+
+.starters-area {
+
+  right: 50%;
+  top: 43%;
+
+  width: 50%;
+  height: 28%;
+}
+
+
+/* Drinks — middle left */
+
+.drinks-area {
+
+  left: 50%;
+  top: 43%;
+
+  width: 50%;
+  height: 28%;
+}
+
+
+/* Sides — bottom right */
+
+.sides-area {
+
+  right: 50%;
+  top: 71%;
+
+  width: 50%;
+  height: 28%;
+}
+
+
+/* Desserts — bottom left */
+
+.desserts-area {
+
+  left: 50%;
+  top: 71%;
+
+  width: 50%;
+  height: 28%;
+}
+
+
+/* =========================
    MOBILE
 ========================= */
 
 @media (max-width: 600px) {
 
   .arrow {
+
     width: 38px;
     height: 38px;
+
     font-size: 19px;
   }
 
+
   .navigation {
+
     bottom: 14px;
     gap: 10px;
   }
 
-  .home-button {
+
+  .home-button,
+  .menu-button {
+
     top: 14px;
-    left: 14px;
+
     padding: 8px 14px;
+
     font-size: 12px;
   }
 
 }
 
 </style>
+
 </head>
 
 
@@ -233,6 +419,69 @@ html, body {
 
 
 <!-- =========================
+     EXPLORE MENU
+========================= -->
+
+<button
+  class="menu-area explore-area"
+  onclick="goToPage(1)">
+</button>
+
+
+<!-- =========================
+     CATEGORY BUTTONS
+========================= -->
+
+
+<!-- Main Dishes -->
+
+<button
+  class="menu-area main-dishes-area"
+  onclick="goToPage(2)">
+</button>
+
+
+<!-- Soups -->
+
+<button
+  class="menu-area soups-area"
+  onclick="goToPage(3)">
+</button>
+
+
+<!-- Starters -->
+
+<button
+  class="menu-area starters-area"
+  onclick="goToPage(4)">
+</button>
+
+
+<!-- Drinks -->
+
+<button
+  class="menu-area drinks-area"
+  onclick="goToPage(5)">
+</button>
+
+
+<!-- Sides -->
+
+<button
+  class="menu-area sides-area"
+  onclick="goToPage(6)">
+</button>
+
+
+<!-- Desserts -->
+
+<button
+  class="menu-area desserts-area"
+  onclick="goToPage(7)">
+</button>
+
+
+<!-- =========================
      HOME BUTTON
 ========================= -->
 
@@ -247,7 +496,21 @@ html, body {
 
 
 <!-- =========================
-     NAVIGATION
+     BACK TO MENU
+========================= -->
+
+<button
+  id="menuButton"
+  class="menu-button"
+  onclick="goToMenu()">
+
+  ← Back to Menu
+
+</button>
+
+
+<!-- =========================
+     NAVIGATION ARROWS
 ========================= -->
 
 <div class="navigation">
@@ -277,6 +540,10 @@ html, body {
 <script>
 
 
+/* =========================
+   VARIABLES
+========================= */
+
 let currentPage = 0;
 
 
@@ -296,6 +563,10 @@ const homeButton =
   document.getElementById("homeButton");
 
 
+const menuButton =
+  document.getElementById("menuButton");
+
+
 /* =========================
    UPDATE PAGE
 ========================= */
@@ -313,10 +584,7 @@ function updatePage() {
   pages[currentPage].classList.add("active");
 
 
-  /*
-     الصفحة الأولى:
-     لا يوجد Home
-  */
+  /* HOME */
 
   if (currentPage === 0) {
 
@@ -329,10 +597,23 @@ function updatePage() {
   }
 
 
-  /*
-     أول صفحة:
-     سهم اليسار مخفي
-  */
+  /* BACK TO MENU */
+
+  if (
+    currentPage >= 2 &&
+    currentPage <= 8
+  ) {
+
+    menuButton.classList.add("visible");
+
+  } else {
+
+    menuButton.classList.remove("visible");
+
+  }
+
+
+  /* PREVIOUS */
 
   if (currentPage === 0) {
 
@@ -345,12 +626,11 @@ function updatePage() {
   }
 
 
-  /*
-     آخر صفحة:
-     سهم اليمين مخفي
-  */
+  /* NEXT */
 
-  if (currentPage === pages.length - 1) {
+  if (
+    currentPage === pages.length - 1
+  ) {
 
     nextButton.classList.add("hidden");
 
@@ -364,12 +644,35 @@ function updatePage() {
 
 
 /* =========================
-   NEXT PAGE
+   GO TO SPECIFIC PAGE
+========================= */
+
+function goToPage(pageNumber) {
+
+  if (
+    pageNumber >= 0 &&
+    pageNumber < pages.length
+  ) {
+
+    currentPage = pageNumber;
+
+    updatePage();
+
+  }
+
+}
+
+
+/* =========================
+   NEXT
 ========================= */
 
 function nextPage() {
 
-  if (currentPage < pages.length - 1) {
+  if (
+    currentPage <
+    pages.length - 1
+  ) {
 
     currentPage++;
 
@@ -381,7 +684,7 @@ function nextPage() {
 
 
 /* =========================
-   PREVIOUS PAGE
+   PREVIOUS
 ========================= */
 
 function previousPage() {
@@ -411,32 +714,48 @@ function goHome() {
 
 
 /* =========================
-   KEYBOARD
+   BACK TO MENU
 ========================= */
 
-document.addEventListener("keydown", function(event) {
+function goToMenu() {
 
-  if (event.key === "ArrowRight") {
+  currentPage = 1;
 
-    nextPage();
+  updatePage();
 
-  }
-
-  if (event.key === "ArrowLeft") {
-
-    previousPage();
-
-  }
-
-});
+}
 
 
 /* =========================
-   INITIAL STATE
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (event.key === "ArrowRight") {
+
+      nextPage();
+
+    }
+
+
+    if (event.key === "ArrowLeft") {
+
+      previousPage();
+
+    }
+
+  }
+);
+
+
+/* =========================
+   INITIAL
 ========================= */
 
 updatePage();
-
 
 </script>
 
